@@ -1,25 +1,24 @@
 # Project Title: 📛
 ShiftSync 
-<hr/>
+
 # Live Link / Demo Link: 🔗
 Access my site at https://timesheet-management-apps.vercel.app/
-<hr/>
+
 # Table of Content: 📑
 - [About the Project](#about-the-project)
-- [Screenshots](#screenshots)
 - [Technologies Used](#technologies-used)
 - [Setup / Installation](#setup--installation)
 - [Credits](#credits)
-<hr/>
+
 ## About the Project: 📚
  An employee time-entry management system
 A system where employees can log in and create their timesheets for entire week and then submit it to manager. 
 Manager can log in and see all the timesheets submitted by employees and then he can validate the timesheets.
 
-<hr/>
+
 ## Technologies Used: ☕️ 🐍 ⚛️
 List the tools and technologies used to build the project. Doing this can help developers familiar with these technologies to contribute and help improve the codebase.
-<hr/>
+
 ## Setup / Installation 💻
 
 To run ShiftSync locally, follow these steps:
@@ -50,7 +49,7 @@ To run ShiftSync locally, follow these steps:
    ```
 
    Ensure you have Node.js and npm installed on your machine before proceeding with the above steps. Adjust the port number (3000) in step 6 if your server runs on a different port.
-<hr/>
+
 ## Credits 📝
 
 I would like to express my gratitude to my mentor who provided invaluable guidance and support throughout the project sessions, helping me design and implement ShiftSync effectively.
