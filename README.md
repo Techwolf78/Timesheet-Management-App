@@ -13,17 +13,48 @@ Access my site at https://timesheet-management-apps.vercel.app/
 - [Setup / Installation](#setup--installation)
 - [Credits](#credits)
 
-# About the Project: 📚
+## About the Project: 📚
 Give a brief description of the project. What was the reason or motivation behind the creation of the project?
 
-# Screenshots: 📷
+## Screenshots: 📷
 Add a picture or short video(gif) demo of how the project works.
 
-# Technologies Used: ☕️ 🐍 ⚛️
+## Technologies Used: ☕️ 🐍 ⚛️
 List the tools and technologies used to build the project. Doing this can help developers familiar with these technologies to contribute and help improve the codebase.
 
-# Setup / Installation: 💻
-Concisely and clearly, list the steps needed to run the project.
+## Setup / Installation 💻
 
-# Credits: 📝
-Giving credit is very important. Don’t forget to give credit to anyone who inspired or helped one way or the other in contributing to the project. Is the project based on course work? Or an expansion of someone’s previous work? Don’t hesitate to add links to the repository or people who played a role.
+To run ShiftSync locally, follow these steps:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/your-username/shiftsync.git
+   
+2. **Navigate into the project directory:**
+
+  
+  cd shiftsync
+
+3. **Install dependencies:**
+
+  ```bash
+  npm install
+````
+4. **Start the server:**
+
+    ```bash
+    npm start
+
+5. **Open your browser and visit:**
+
+http://localhost:3000
+<br/>
+Ensure you have Node.js and npm installed on your machine before proceeding with the above steps. Adjust the port number (3000) in step 6 if your server runs on a different port.
+
+## Credits 📝
+
+I would like to express my gratitude to my mentor who provided invaluable guidance and support throughout the project sessions, helping me design and implement ShiftSync effectively.
+
+Additionally, I extend my thanks to ExcleR for providing me with the opportunity to work on a real-life project, which significantly contributed to the development of ShiftSync.
+
