@@ -1,5 +1,6 @@
 # Project Title: 📛
-ShiftSync 
+
+## ShiftSync: Employee Timesheet Management WebApp
 
 # Live Link / Demo Link: 🔗
 Access my site at https://timesheet-management-apps.vercel.app/
