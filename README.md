@@ -18,7 +18,11 @@ Manager can log in and see all the timesheets submitted by employees and then he
 
 
 ## Technologies Used: ☕️ 🐍 ⚛️
-List the tools and technologies used to build the project. Doing this can help developers familiar with these technologies to contribute and help improve the codebase.
+- HTML
+- CSS
+- JAVASCRIPT
+- REACT.JS
+- REACT TOAST
 
 ## Setup / Installation 💻
 
