@@ -7,12 +7,11 @@ Manager can log in and see all the timesheets submitted by employees and then he
 Access my site at https://timesheet-management-apps.vercel.app/
 
 # Table of Content: 📑
-- [ABOUT]
-- [SCREENSHOTS]
-- [TECHNOLOGIES]
-- [SETUP]
-- [CREDITS]
-- [FORMSUBMIT]
+- [About the Project](#about-the-project)
+- [Screenshots](#screenshots)
+- [Technologies Used](#technologies-used)
+- [Setup / Installation](#setup--installation)
+- [Credits](#credits)
 
 # About the Project: 📚
 Give a brief description of the project. What was the reason or motivation behind the creation of the project?
