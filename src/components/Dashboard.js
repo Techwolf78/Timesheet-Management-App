@@ -13,7 +13,7 @@ const Dashboard = ({ user }) => {
   const [minDate, setMinDate] = useState("");
   const [pastTimesheets, setPastTimesheets] = useState([]);
   const [filteredTimesheets, setFilteredTimesheets] = useState([]);
-  
+
   // State for rejection modal
   const [showRejectModal, setShowRejectModal] = useState(false);
   const [rejectionReason, setRejectionReason] = useState("");
@@ -31,7 +31,8 @@ const Dashboard = ({ user }) => {
 
     // Mock dates
     const today = new Date();
-    const diff = today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1);
+    const diff =
+      today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1);
     const monday = new Date(today.setDate(diff));
     const mondayFormatted = monday.toISOString().split("T")[0];
     setFromDate(mondayFormatted);
@@ -40,11 +41,16 @@ const Dashboard = ({ user }) => {
     setMinDate(calculateMinDate(mondayFormatted));
 
     // Load past timesheets from localStorage
-    const storedTimesheets = JSON.parse(localStorage.getItem("timesheets")) || [];
+    const storedTimesheets =
+      JSON.parse(localStorage.getItem("timesheets")) || [];
     setPastTimesheets(storedTimesheets);
 
     // Set initial filtered timesheets for the current week
-    const initialFilteredTimesheets = filterTimesheetsByWeek(storedTimesheets, mondayFormatted, calculateToDate(mondayFormatted));
+    const initialFilteredTimesheets = filterTimesheetsByWeek(
+      storedTimesheets,
+      mondayFormatted,
+      calculateToDate(mondayFormatted)
+    );
     setFilteredTimesheets(initialFilteredTimesheets);
   }, [user.role]);
 
@@ -56,10 +62,12 @@ const Dashboard = ({ user }) => {
           {/* Add Employee Name and Project Details */}
           <div className="employee-details">
             <label>Employee Name:</label>
-            <span>{userName}</span><br />
+            <span>{userName}</span>
+            <br />
             {/* Add Project */}
             <label>Project:</label>
-            <span>{project}</span><br />
+            <span>{project}</span>
+            <br />
             {/* Add Status */}
             <label>Status:</label>
             <span>{getUserTimesheetStatus()}</span>
@@ -73,9 +81,20 @@ const Dashboard = ({ user }) => {
           {/* From Date */}
           <label>From Date:</label>
           <div className="date-input">
-            <button onClick={handlePrevWeek} disabled={fromDate === minDate}>&lt;</button>
-            <input type="date" value={fromDate} onChange={handleFromDateChange} min={minDate} max={maxDate} readOnly />
-            <button onClick={handleNextWeek} disabled={fromDate === maxDate}>&gt;</button>
+            <button onClick={handlePrevWeek} disabled={fromDate === minDate}>
+              &lt;
+            </button>
+            <input
+              type="date"
+              value={fromDate}
+              onChange={handleFromDateChange}
+              min={minDate}
+              max={maxDate}
+              readOnly
+            />
+            <button onClick={handleNextWeek} disabled={fromDate === maxDate}>
+              &gt;
+            </button>
           </div>
           {/* To Date */}
           <label>To Date:</label>
@@ -152,8 +171,10 @@ const Dashboard = ({ user }) => {
 
   const handlePrevWeek = (e) => {
     e.preventDefault();
-    const prevWeek = new Date(new Date(fromDate).getTime() - 7 * 24 * 60 * 60 * 1000);
-    const prevWeekDate = prevWeek.toISOString().split('T')[0];
+    const prevWeek = new Date(
+      new Date(fromDate).getTime() - 7 * 24 * 60 * 60 * 1000
+    );
+    const prevWeekDate = prevWeek.toISOString().split("T")[0];
     setFromDate(prevWeekDate);
     setToDate(calculateToDate(prevWeekDate));
     updateFilteredTimesheets(prevWeekDate, calculateToDate(prevWeekDate));
@@ -161,10 +182,12 @@ const Dashboard = ({ user }) => {
 
   const handleNextWeek = (e) => {
     e.preventDefault();
-    const today = new Date().toISOString().split('T')[0];
+    const today = new Date().toISOString().split("T")[0];
     if (fromDate !== today) {
-      const nextWeek = new Date(new Date(fromDate).getTime() + 7 * 24 * 60 * 60 * 1000);
-      const nextWeekDate = nextWeek.toISOString().split('T')[0];
+      const nextWeek = new Date(
+        new Date(fromDate).getTime() + 7 * 24 * 60 * 60 * 1000
+      );
+      const nextWeekDate = nextWeek.toISOString().split("T")[0];
       setFromDate(nextWeekDate);
       setToDate(calculateToDate(nextWeekDate));
       updateFilteredTimesheets(nextWeekDate, calculateToDate(nextWeekDate));
@@ -172,48 +195,73 @@ const Dashboard = ({ user }) => {
   };
 
   const updateFilteredTimesheets = (startDate, endDate) => {
-    setFilteredTimesheets(filterTimesheetsByWeek(pastTimesheets, startDate, endDate));
+    setFilteredTimesheets(
+      filterTimesheetsByWeek(pastTimesheets, startDate, endDate)
+    );
   };
 
   const filterTimesheetsByWeek = (timesheets, startDate, endDate) => {
-    return timesheets.filter((timesheet) => timesheet.fromDate >= startDate && timesheet.toDate <= endDate);
+    return timesheets.filter(
+      (timesheet) =>
+        timesheet.fromDate >= startDate && timesheet.toDate <= endDate
+    );
   };
 
   const calculateToDate = (fromDate) => {
-    const toDate = new Date(new Date(fromDate).getTime() + 6 * 24 * 60 * 60 * 1000);
-    return toDate.toISOString().split('T')[0];
+    const toDate = new Date(
+      new Date(fromDate).getTime() + 6 * 24 * 60 * 60 * 1000
+    );
+    return toDate.toISOString().split("T")[0];
   };
 
   const calculateMinDate = (fromDate) => {
-    const minDate = new Date(new Date(fromDate).getTime() - 28 * 24 * 60 * 60 * 1000); // 4 weeks back
-    return minDate.toISOString().split('T')[0];
+    const minDate = new Date(
+      new Date(fromDate).getTime() - 28 * 24 * 60 * 60 * 1000
+    ); // 4 weeks back
+    return minDate.toISOString().split("T")[0];
   };
 
   const handleTimeChange = (e, day) => {
     const startTimeName = `startTime_${day}`;
     const endTimeName = `endTime_${day}`;
     const workHoursName = `workHours_${day}`;
-    const startTime = document.querySelector(`select[name="${startTimeName}"]`).value;
-    const endTime = document.querySelector(`select[name="${endTimeName}"]`).value;
+    const startTime = document.querySelector(
+      `select[name="${startTimeName}"]`
+    ).value;
+    const endTime = document.querySelector(
+      `select[name="${endTimeName}"]`
+    ).value;
     const [startHour, startMinute, startPeriod] = startTime.split(/:| /);
     const [endHour, endMinute, endPeriod] = endTime.split(/:| /);
-    let start = parseInt(startHour, 10) + (startPeriod === "PM" && startHour !== "12" ? 12 : 0) + parseInt(startMinute, 10) / 60;
-    let end = parseInt(endHour, 10) + (endPeriod === "PM" && endHour !== "12" ? 12 : 0) + parseInt(endMinute, 10) / 60;
+    let start =
+      parseInt(startHour, 10) +
+      (startPeriod === "PM" && startHour !== "12" ? 12 : 0) +
+      parseInt(startMinute, 10) / 60;
+    let end =
+      parseInt(endHour, 10) +
+      (endPeriod === "PM" && endHour !== "12" ? 12 : 0) +
+      parseInt(endMinute, 10) / 60;
     let hours = end - start;
     if (hours < 0) hours += 24;
-    document.querySelector(`input[name="${workHoursName}"]`).value = hours.toFixed(2);
+    document.querySelector(`input[name="${workHoursName}"]`).value =
+      hours.toFixed(2);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const storedTimesheets = JSON.parse(localStorage.getItem("timesheets")) || [];
-  
-    const weekAlreadySubmittedIndex = storedTimesheets.findIndex((timesheet) => {
-      return timesheet.employeeId === user.employeeId
-        && timesheet.fromDate === fromDate
-        && timesheet.toDate === toDate;
-    });
-  
+    const storedTimesheets =
+      JSON.parse(localStorage.getItem("timesheets")) || [];
+
+    const weekAlreadySubmittedIndex = storedTimesheets.findIndex(
+      (timesheet) => {
+        return (
+          timesheet.employeeId === user.employeeId &&
+          timesheet.fromDate === fromDate &&
+          timesheet.toDate === toDate
+        );
+      }
+    );
+
     if (weekAlreadySubmittedIndex !== -1) {
       // Update existing timesheet
       storedTimesheets[weekAlreadySubmittedIndex].status = "Pending"; // Reset status if resubmitting
@@ -234,15 +282,15 @@ const Dashboard = ({ user }) => {
       };
       storedTimesheets.push(newTimesheet);
     }
-  
+
     localStorage.setItem("timesheets", JSON.stringify(storedTimesheets));
     setPastTimesheets(storedTimesheets);
     setFilteredTimesheets(storedTimesheets);
-    
+
     alert("Timesheet submitted successfully.");
     resetWorkHours();
   };
-  
+
   const calculateTotalHours = () => {
     // Calculate total hours worked for the week
     let totalHours = 0;
@@ -255,7 +303,10 @@ const Dashboard = ({ user }) => {
       "Saturday",
       "Sunday",
     ].forEach((day) => {
-      const workHours = parseFloat(document.querySelector(`input[name="workHours_${day}"]`).value) || 0;
+      const workHours =
+        parseFloat(
+          document.querySelector(`input[name="workHours_${day}"]`).value
+        ) || 0;
       totalHours += workHours;
     });
     return totalHours.toFixed(2);
@@ -283,11 +334,13 @@ const Dashboard = ({ user }) => {
 
   const getUserTimesheetStatus = () => {
     const currentWeekTimesheets = filteredTimesheets.filter((timesheet) => {
-      return timesheet.employeeId === user.employeeId
-        && timesheet.fromDate === fromDate
-        && timesheet.toDate === toDate;
+      return (
+        timesheet.employeeId === user.employeeId &&
+        timesheet.fromDate === fromDate &&
+        timesheet.toDate === toDate
+      );
     });
-  
+
     if (currentWeekTimesheets.length === 0) {
       return "Not Submitted";
     } else {
@@ -295,7 +348,6 @@ const Dashboard = ({ user }) => {
       return status;
     }
   };
-  
 
   const resetWorkHours = () => {
     [
@@ -319,7 +371,11 @@ const Dashboard = ({ user }) => {
   const handleRejectConfirm = () => {
     const updatedTimesheets = pastTimesheets.map((timesheet) => {
       if (timesheet.id === selectedTimesheet.id) {
-        return { ...timesheet, status: "Rejected", rejectionReason: rejectionReason };
+        return {
+          ...timesheet,
+          status: "Rejected",
+          rejectionReason: rejectionReason,
+        };
       }
       return timesheet;
     });
@@ -338,7 +394,9 @@ const Dashboard = ({ user }) => {
     <div className="dashboard-container">
       <div className="navbar">
         {user.role === "manager" && (
-          <button onClick={handleValidateTimesheets}>Validate Timesheets</button>
+          <button onClick={handleValidateTimesheets}>
+            Validate Timesheets
+          </button>
         )}
         <button onClick={handleLogout}>Logout</button>
       </div>
@@ -352,7 +410,9 @@ const Dashboard = ({ user }) => {
       {showRejectModal && (
         <div className="reject-modal">
           <div className="modal-content">
-            <span className="close" onClick={handleRejectCancel}>&times;</span>
+            <span className="close" onClick={handleRejectCancel}>
+              &times;
+            </span>
             <h2>Reject Timesheet</h2>
             <p>Please provide a reason for rejecting this timesheet:</p>
             <textarea
