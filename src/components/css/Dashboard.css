@@ -1,4 +1,3 @@
-/* Add this style for dashboard container */
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -6,30 +5,26 @@
   position: relative;
 }
 
-/* Add this style for navbar */
 .navbar {
   display: flex;
   justify-content: flex-end;
   padding: 10px;
 }
 
-/* Add this style for navbar buttons */
 .navbar button {
   margin-left: 10px;
   padding: 10px 20px;
   border: none;
   border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Add transition for smooth color change on hover */
-  background-color: #007bff; /* Blue color */
+  transition: background-color 0.3s;
+  background-color: #f13d10;
 }
 
 .navbar button:hover {
-  background-color: #4CAF50; /* Green color on hover */
+  background-color: #4caf50;
 }
 
-
-/* Add this style for timesheet container */
 .timesheet-container {
   border: 1px solid #ccc;
   padding: 20px;
@@ -38,30 +33,25 @@
   background-color: #f9f9f9;
 }
 
-/* Add this style for table */
 .timesheet-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-/* Add this style for table header */
 .timesheet-table th {
   background-color: #007bff !important;
   color: white !important;
   padding: 10px;
 }
 
-/* Add this style for table rows */
 .timesheet-table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* Add this style for table data */
 .timesheet-table td {
   padding: 10px;
 }
 
-/* Add this style for input fields */
 .timesheet-container input[type="date"],
 .timesheet-container input[type="text"],
 .timesheet-container select {
@@ -73,34 +63,30 @@
   box-sizing: border-box;
 }
 
-/* Add this style for buttons in the timesheet form */
 .timesheet-container button {
   padding: 10px 20px;
   background-color: #007bff !important;
   color: #fff !important;
   border: none !important;
-  border-radius: 20px !important; /* Make the border-radius larger for a more curved appearance */
+  border-radius: 20px !important;
   cursor: pointer;
-  transition: background-color 0.3s; /* Add transition for smooth color change on hover */
+  transition: background-color 0.3s;
 }
 
 .timesheet-container button:hover {
   background-color: #0056b3 !important;
 }
 
-/* Add this style for date input container */
 .date-input {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 }
 
-/* Add this style for date input buttons */
 .date-input button {
   margin: 0 5px;
 }
 
-/* Add this style for rejection modal */
 .reject-modal {
   position: fixed;
   z-index: 999;

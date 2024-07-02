@@ -1,8 +1,15 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import ValidateTimesheetsPage from "./components/ValidateTimesheetsPage";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,23 +20,27 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <div className="background-image">
-          <h1>ShiftSync</h1>
-          <h2>An Employee Time-Entry Management System</h2>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                !user ? <Login setUser={setUser} /> : <Dashboard user={user} />
-              }
-            />
-            <Route
-              path="/validate-timesheets"
-              element={<ValidateTimesheetsPage />}
-            />
-          </Routes>
-          <ToastContainer />
-        </div>
+        <Navbar user={user} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/login"
+            element={
+              !user ? <Login setUser={setUser} /> : <Navigate to="/dashboard" />
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              user ? <Dashboard user={user} /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/validate-timesheets"
+            element={<ValidateTimesheetsPage />}
+          />
+        </Routes>
+        <ToastContainer />
       </div>
     </Router>
   );

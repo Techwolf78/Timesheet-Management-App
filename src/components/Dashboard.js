@@ -14,13 +14,11 @@ const Dashboard = ({ user }) => {
   const [pastTimesheets, setPastTimesheets] = useState([]);
   const [filteredTimesheets, setFilteredTimesheets] = useState([]);
 
-  // State for rejection modal
   const [showRejectModal, setShowRejectModal] = useState(false);
   const [rejectionReason, setRejectionReason] = useState("");
   const [selectedTimesheet, setSelectedTimesheet] = useState(null);
 
   useEffect(() => {
-    // Mock user data based on role
     if (user.role === "manager") {
       setUserName("Alice Smith");
       setProject("Timesheet App");
@@ -29,7 +27,6 @@ const Dashboard = ({ user }) => {
       setProject("Database Optimization");
     }
 
-    // Mock dates
     const today = new Date();
     const diff =
       today.getDate() - today.getDay() + (today.getDay() === 0 ? -6 : 1);
@@ -40,12 +37,10 @@ const Dashboard = ({ user }) => {
     setMaxDate(mondayFormatted);
     setMinDate(calculateMinDate(mondayFormatted));
 
-    // Load past timesheets from localStorage
     const storedTimesheets =
       JSON.parse(localStorage.getItem("timesheets")) || [];
     setPastTimesheets(storedTimesheets);
 
-    // Set initial filtered timesheets for the current week
     const initialFilteredTimesheets = filterTimesheetsByWeek(
       storedTimesheets,
       mondayFormatted,
@@ -217,7 +212,7 @@ const Dashboard = ({ user }) => {
   const calculateMinDate = (fromDate) => {
     const minDate = new Date(
       new Date(fromDate).getTime() - 28 * 24 * 60 * 60 * 1000
-    ); // 4 weeks back
+    );
     return minDate.toISOString().split("T")[0];
   };
 
@@ -263,12 +258,10 @@ const Dashboard = ({ user }) => {
     );
 
     if (weekAlreadySubmittedIndex !== -1) {
-      // Update existing timesheet
-      storedTimesheets[weekAlreadySubmittedIndex].status = "Pending"; // Reset status if resubmitting
+      storedTimesheets[weekAlreadySubmittedIndex].status = "Pending";
       storedTimesheets[weekAlreadySubmittedIndex].hours = calculateTotalHours();
-      storedTimesheets[weekAlreadySubmittedIndex].rejectionReason = ""; // Reset rejection reason if resubmitting
+      storedTimesheets[weekAlreadySubmittedIndex].rejectionReason = "";
     } else {
-      // Create a new timesheet object
       const newTimesheet = {
         id: storedTimesheets.length + 1,
         employee: userName,
@@ -292,7 +285,6 @@ const Dashboard = ({ user }) => {
   };
 
   const calculateTotalHours = () => {
-    // Calculate total hours worked for the week
     let totalHours = 0;
     [
       "Monday",

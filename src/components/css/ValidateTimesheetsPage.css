@@ -1,55 +1,46 @@
-/* Add this style for timesheets container */
 .timesheets-container {
   margin: 20px;
 }
 
-/* Add this style for table */
 table {
   width: 100%;
   border-collapse: collapse;
 }
 
-/* Add this style for table header and data cells */
-th, td {
+th,
+td {
   padding: 10px;
   border: 1px solid #ddd;
 }
 
-/* Add this style for table header */
 th {
   background-color: #f2f2f2;
   font-weight: bold;
   text-align: left;
 }
 
-/* Add this style for even rows */
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
-/* Add hover effect on rows */
 tr:hover {
   background-color: #ddd;
 }
 
-/* Add style for data cells */
 td {
   text-align: left;
 }
 
-/* Add style for h2 headings */
 h2 {
   color: #333;
 }
 
-/* Add margin for button container */
 .button-container {
   margin-top: 20px;
 }
 
-/* Add style for buttons */
 button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -62,37 +53,30 @@ button {
   transition: background-color 0.3s;
 }
 
-/* Hover effect for buttons */
 button:hover {
   background-color: #45a049;
 }
 
-/* Style for the "Go Back" button */
 .go-back-button {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
 }
 
-/* Hover effect for "Go Back" button */
 .go-back-button:hover {
   background-color: #d32f2f;
 }
 
-/* Style for the "Approve" button */
 .approve-button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50;
 }
 
-/* Hover effect for "Approve" button */
 .approve-button:hover {
   background-color: #45a049;
 }
 
-/* Style for the "Reject" button */
 .reject-button {
-  background-color: #f44336; /* Red */
+  background-color: #f44336;
 }
 
-/* Hover effect for "Reject" button */
 .reject-button:hover {
   background-color: #d32f2f;
 }
